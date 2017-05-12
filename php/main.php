@@ -1,9 +1,9 @@
 <?php
-$dir = new FilesystemIterator('F:\TEST', FilesystemIterator::SKIP_DOTS);
+$dir = new FilesystemIterator('/mnt/motionvideos', FilesystemIterator::SKIP_DOTS);
 $count = iterator_count($dir);
 $new_count = iterator_count($dir);
 while (true){
-	$fi = new FilesystemIterator('F:\TEST', FilesystemIterator::SKIP_DOTS);
+	$fi = new FilesystemIterator('/mnt/motionvideos', FilesystemIterator::SKIP_DOTS);
 	$new_count = iterator_count($dir);
 	if ($count < $new_count){
 		$to = "pepi2401_98@abv.bg";
@@ -12,6 +12,7 @@ while (true){
 		$headers = "From: raspberry@pi.com";
 
 		mail($to,$subject,$txt,$headers);
+		echo "sent mail";
 		$count = $new_count;
 	}
 }
